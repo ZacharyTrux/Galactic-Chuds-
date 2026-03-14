@@ -93,7 +93,7 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
             ""id"": ""bf1aef29-75d1-4db9-b465-c94b2a53b542"",
             ""actions"": [
                 {
-                    ""name"": ""Up Action"",
+                    ""name"": ""Move Up"",
                     ""type"": ""Button"",
                     ""id"": ""28b3620b-8807-449d-90ff-08e2dccc3f97"",
                     ""expectedControlType"": """",
@@ -102,7 +102,7 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Down Action"",
+                    ""name"": ""Move Down"",
                     ""type"": ""Button"",
                     ""id"": ""2bc0815f-adcc-498e-966f-b7c1103fb5fc"",
                     ""expectedControlType"": """",
@@ -120,13 +120,31 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Shooting Action"",
+                    ""name"": ""Shoot"",
                     ""type"": ""Button"",
                     ""id"": ""02d0839f-4c88-46a1-8471-ed9608ef2510"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Move Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""00b3897f-6518-48c8-b4b9-4b3651cb2618"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Move Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""edd8b180-9806-4259-839d-6f9de716da96"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -137,7 +155,7 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Up Action"",
+                    ""action"": ""Move Up"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -148,18 +166,18 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Up Action"",
+                    ""action"": ""Move Up"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""0ef9dbf6-7d97-40ad-8308-f7642bca9861"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Down Action"",
+                    ""action"": ""Move Down"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -170,7 +188,7 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Down Action"",
+                    ""action"": ""Move Down"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -192,7 +210,51 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Shooting Action"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95d92d52-9db6-4b01-96a8-fe7e2ba747a8"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5455c292-0c5f-4a4b-a41e-087021d4ab42"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db8b3a99-5f4d-4c2d-8bef-876d7e53398d"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0e83b9f4-ee39-4df3-ad2b-71c41b46754c"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -203,10 +265,12 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
 }");
         // Standard
         m_Standard = asset.FindActionMap("Standard", throwIfNotFound: true);
-        m_Standard_UpAction = m_Standard.FindAction("Up Action", throwIfNotFound: true);
-        m_Standard_DownAction = m_Standard.FindAction("Down Action", throwIfNotFound: true);
+        m_Standard_MoveUp = m_Standard.FindAction("Move Up", throwIfNotFound: true);
+        m_Standard_MoveDown = m_Standard.FindAction("Move Down", throwIfNotFound: true);
         m_Standard_Pause = m_Standard.FindAction("Pause", throwIfNotFound: true);
-        m_Standard_ShootingAction = m_Standard.FindAction("Shooting Action", throwIfNotFound: true);
+        m_Standard_Shoot = m_Standard.FindAction("Shoot", throwIfNotFound: true);
+        m_Standard_MoveLeft = m_Standard.FindAction("Move Left", throwIfNotFound: true);
+        m_Standard_MoveRight = m_Standard.FindAction("Move Right", throwIfNotFound: true);
     }
 
     ~@GalacticChudInputs()
@@ -287,10 +351,12 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
     // Standard
     private readonly InputActionMap m_Standard;
     private List<IStandardActions> m_StandardActionsCallbackInterfaces = new List<IStandardActions>();
-    private readonly InputAction m_Standard_UpAction;
-    private readonly InputAction m_Standard_DownAction;
+    private readonly InputAction m_Standard_MoveUp;
+    private readonly InputAction m_Standard_MoveDown;
     private readonly InputAction m_Standard_Pause;
-    private readonly InputAction m_Standard_ShootingAction;
+    private readonly InputAction m_Standard_Shoot;
+    private readonly InputAction m_Standard_MoveLeft;
+    private readonly InputAction m_Standard_MoveRight;
     /// <summary>
     /// Provides access to input actions defined in input action map "Standard".
     /// </summary>
@@ -303,21 +369,29 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
         /// </summary>
         public StandardActions(@GalacticChudInputs wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "Standard/UpAction".
+        /// Provides access to the underlying input action "Standard/MoveUp".
         /// </summary>
-        public InputAction @UpAction => m_Wrapper.m_Standard_UpAction;
+        public InputAction @MoveUp => m_Wrapper.m_Standard_MoveUp;
         /// <summary>
-        /// Provides access to the underlying input action "Standard/DownAction".
+        /// Provides access to the underlying input action "Standard/MoveDown".
         /// </summary>
-        public InputAction @DownAction => m_Wrapper.m_Standard_DownAction;
+        public InputAction @MoveDown => m_Wrapper.m_Standard_MoveDown;
         /// <summary>
         /// Provides access to the underlying input action "Standard/Pause".
         /// </summary>
         public InputAction @Pause => m_Wrapper.m_Standard_Pause;
         /// <summary>
-        /// Provides access to the underlying input action "Standard/ShootingAction".
+        /// Provides access to the underlying input action "Standard/Shoot".
         /// </summary>
-        public InputAction @ShootingAction => m_Wrapper.m_Standard_ShootingAction;
+        public InputAction @Shoot => m_Wrapper.m_Standard_Shoot;
+        /// <summary>
+        /// Provides access to the underlying input action "Standard/MoveLeft".
+        /// </summary>
+        public InputAction @MoveLeft => m_Wrapper.m_Standard_MoveLeft;
+        /// <summary>
+        /// Provides access to the underlying input action "Standard/MoveRight".
+        /// </summary>
+        public InputAction @MoveRight => m_Wrapper.m_Standard_MoveRight;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -344,18 +418,24 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_StandardActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_StandardActionsCallbackInterfaces.Add(instance);
-            @UpAction.started += instance.OnUpAction;
-            @UpAction.performed += instance.OnUpAction;
-            @UpAction.canceled += instance.OnUpAction;
-            @DownAction.started += instance.OnDownAction;
-            @DownAction.performed += instance.OnDownAction;
-            @DownAction.canceled += instance.OnDownAction;
+            @MoveUp.started += instance.OnMoveUp;
+            @MoveUp.performed += instance.OnMoveUp;
+            @MoveUp.canceled += instance.OnMoveUp;
+            @MoveDown.started += instance.OnMoveDown;
+            @MoveDown.performed += instance.OnMoveDown;
+            @MoveDown.canceled += instance.OnMoveDown;
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
-            @ShootingAction.started += instance.OnShootingAction;
-            @ShootingAction.performed += instance.OnShootingAction;
-            @ShootingAction.canceled += instance.OnShootingAction;
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
+            @MoveLeft.started += instance.OnMoveLeft;
+            @MoveLeft.performed += instance.OnMoveLeft;
+            @MoveLeft.canceled += instance.OnMoveLeft;
+            @MoveRight.started += instance.OnMoveRight;
+            @MoveRight.performed += instance.OnMoveRight;
+            @MoveRight.canceled += instance.OnMoveRight;
         }
 
         /// <summary>
@@ -367,18 +447,24 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="StandardActions" />
         private void UnregisterCallbacks(IStandardActions instance)
         {
-            @UpAction.started -= instance.OnUpAction;
-            @UpAction.performed -= instance.OnUpAction;
-            @UpAction.canceled -= instance.OnUpAction;
-            @DownAction.started -= instance.OnDownAction;
-            @DownAction.performed -= instance.OnDownAction;
-            @DownAction.canceled -= instance.OnDownAction;
+            @MoveUp.started -= instance.OnMoveUp;
+            @MoveUp.performed -= instance.OnMoveUp;
+            @MoveUp.canceled -= instance.OnMoveUp;
+            @MoveDown.started -= instance.OnMoveDown;
+            @MoveDown.performed -= instance.OnMoveDown;
+            @MoveDown.canceled -= instance.OnMoveDown;
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
-            @ShootingAction.started -= instance.OnShootingAction;
-            @ShootingAction.performed -= instance.OnShootingAction;
-            @ShootingAction.canceled -= instance.OnShootingAction;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
+            @MoveLeft.started -= instance.OnMoveLeft;
+            @MoveLeft.performed -= instance.OnMoveLeft;
+            @MoveLeft.canceled -= instance.OnMoveLeft;
+            @MoveRight.started -= instance.OnMoveRight;
+            @MoveRight.performed -= instance.OnMoveRight;
+            @MoveRight.canceled -= instance.OnMoveRight;
         }
 
         /// <summary>
@@ -420,19 +506,19 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
     public interface IStandardActions
     {
         /// <summary>
-        /// Method invoked when associated input action "Up Action" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Move Up" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnUpAction(InputAction.CallbackContext context);
+        void OnMoveUp(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Down Action" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Move Down" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnDownAction(InputAction.CallbackContext context);
+        void OnMoveDown(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -441,11 +527,25 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPause(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Shooting Action" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Shoot" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnShootingAction(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Move Left" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMoveLeft(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Move Right" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMoveRight(InputAction.CallbackContext context);
     }
 }
