@@ -1,20 +1,24 @@
 using UnityEngine;
 
+
 public class Player : MonoBehaviour {
     // set in inspector
     public float speed = 5f;
     public GameObject bulletPrefab;
     public Transform bulletSpawnPoint;
 
-    private GalacticChudInputs inputActions;    
+
+    public static GalacticChudInputs inputActions;    
     private const float Y_LIMIT = 4.6f;
     private const float X_LIMIT = 8.2f;
+    
+
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start(){
         inputActions = new();
         inputActions.Enable();
-        inputActions.Standard.Enable();
+        inputActions.Standard.Enable(); 
     }
 
     // Update is called once per frame
