@@ -13,5 +13,9 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         this.transform.Translate(Vector3.right * speed * Time.deltaTime);
+
+        if (transform.position.x > 12f) {
+            Destroy(gameObject);
+        }
     }
 }
