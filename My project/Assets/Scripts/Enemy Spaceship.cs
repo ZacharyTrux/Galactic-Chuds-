@@ -50,10 +50,12 @@ public class Spaceship : MonoBehaviour {
         if (other.CompareTag("Player Bullet")) {
             Destroy(other.gameObject);
             Destroy(gameObject);
+            PlayerStats stats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
+            stats.UpdateScore(100);
         }
         if (other.CompareTag("Player")) {
-            Destroy(other.gameObject);
             Destroy(gameObject);
+            other.gameObject.GetComponent<PlayerStats>().DamagePlayer();
         }
     }
 }

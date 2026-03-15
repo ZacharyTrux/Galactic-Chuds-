@@ -16,9 +16,11 @@ public class EnemyController : MonoBehaviour {
         if (other.CompareTag("Player Bullet")) {
             Destroy(other.gameObject);
             Destroy(gameObject);
+            PlayerStats stats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
+            stats.UpdateScore(50);
         }
         if (other.CompareTag("Player")) {
-            Destroy(other.gameObject);
+            other.gameObject.GetComponent<PlayerStats>().DamagePlayer();
             Destroy(gameObject);
         }
     }

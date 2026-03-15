@@ -16,7 +16,7 @@ public class PlayerStats : MonoBehaviour
         UpdateUI();
     }
 
-    public void PlayerDamaged()
+    public void DamagePlayer()
     {
         currentHealth -= 1;
         UpdateUI();
@@ -26,7 +26,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void AddScore(int amount)
+    public void UpdateScore(int amount)
     {
         score += amount;
         UpdateUI();
