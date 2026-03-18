@@ -7,10 +7,13 @@ public class Spaceship : MonoBehaviour {
     public GameObject enemyBulletPrefab;
     public Transform bulletSpawnPoint;
     public float fireRate = 2f;
+    public float destroyAtX = -11f;
+
+    // private variables
+    private const float awardedPoints = 1000.0f; 
+    private bool isMovingUp = true;
     private float timeUntilNextShot = 0f;
     private const float Y_LIMIT = 4.6f;
-    private bool isMovingUp = true;
-    public float destroyAtX = -11f;
 
     private void Update() {
         
@@ -46,16 +49,15 @@ public class Spaceship : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Player Bullet")) {
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.CompareTag("Player Bullet")) {
             Destroy(other.gameObject);
             Destroy(gameObject);
-            PlayerStats stats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
-            stats.UpdateScore(100);
+            Score.Instance.UpdateScore(awardedPoints);
         }
-        if (other.CompareTag("Player")) {
+        if (other.gameObject.CompareTag("Player")) {
             Destroy(gameObject);
-            other.gameObject.GetComponent<PlayerStats>().DamagePlayer();
+            other.gameObject.GetComponent<Player>().DamageFromEnemy();
         }
     }
 }

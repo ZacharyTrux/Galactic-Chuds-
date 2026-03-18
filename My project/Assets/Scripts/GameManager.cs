@@ -1,48 +1,59 @@
+using System.Numerics;
+using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [System.Serializable]
+    public float enemySpawnDelay;
     public class EnemyType{
         public GameObject prefab;
         public int weight;
     }
     
-    public EnemyType[] enemyPrefabs;
-    private float spawnRate = 1f; 
+    public EnemyType[] enemies;
+    public BoxCollider2D enemySpawnRange;
+
+    private float enemySpawnTimer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        InvokeRepeating("GetRandomEnemy", 2f, spawnRate);
-    }
+    void SpawnRandomEnemy(){
+        UnityEngine.Vector3 enemySpawnPt = new UnityEngine.Vector3(
+            Random.Range(enemySpawnRange.bounds.min.x, enemySpawnRange.bounds.max.x),
+            Random.Range(enemySpawnRange.bounds.min.y, enemySpawnRange.bounds.max.y),
+            0);
 
-    // Update is called once per frame
-    void GetRandomEnemy(){
-        if(Time.timeScale == 1f){ 
-            int totalWeight = 0;
-            foreach (var enemy in enemyPrefabs){
-                totalWeight += enemy.weight;
-            }
-
-            int randNum = Random.Range(0, totalWeight);
-            int weightSum = 0;
-
-            foreach(var enemy in enemyPrefabs){
-                weightSum += enemy.weight;
-                if(randNum < weightSum){
-                    Spawn(enemy.prefab);
-                    break;
-                }
-            }    
+        int totalWeight = 0;
+        foreach (var enemy in enemies){
+            totalWeight += enemy.weight;
         }
+        int randNum = Random.Range(0, totalWeight);
+        int weightSum = 0;
+        foreach(var enemy in enemies){
+            weightSum += enemy.weight;
+            if(randNum < weightSum){
+                Instantiate(enemy.prefab, enemySpawnPt, UnityEngine.Quaternion.identity);
+                break;
+            }
+        }    
     }
 
-    void Spawn(GameObject prefab){
-        float spawnX = 10f;
-        float spawnY = Random.Range(-5f, 5f);
-        Vector3 spawnPos = new Vector3(spawnX, spawnY, 0);
+    void spawnPowerUp()
+    {
+        UnityEngine.Vector3 powerUpPt = new UnityEngine.Vector3(
+            Random.Range(enemySpawnRange.bounds.min.x, enemySpawnRange.bounds.max.x),
+            Random.Range(enemySpawnRange.bounds.min.y, enemySpawnRange.bounds.max.y),
+            0);
+        Instantiate(powerUpPrefab, powerUpPt, UnityEngine.Quaternion.identity);
+    }
 
-        Instantiate(prefab, spawnPos, Quaternion.identity);
+    void Update(){
+        enemySpawnTimer += Time.deltaTime;
+        if(enemySpawnTimer >= enemySpawnDelay){
+            SpawnRandomEnemy();
+            enemySpawnTimer = 0.0f;
+        }
+
+        powerUp
     }
 }

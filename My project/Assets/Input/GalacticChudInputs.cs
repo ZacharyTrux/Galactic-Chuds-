@@ -145,6 +145,24 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MoveVertically"",
+                    ""type"": ""Button"",
+                    ""id"": ""12316d43-fdbd-42b1-898e-810dd8c22ce0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveHortizontally"",
+                    ""type"": ""Button"",
+                    ""id"": ""64079fcc-a7db-4274-83da-0f2e61789d6c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -257,6 +275,138 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Move Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""b523266e-ed51-45d2-83cb-c6792683ec58"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveVertically"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""48063648-ac2d-4541-aefc-d30f85f9c715"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveVertically"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""94530994-ec4b-460c-a9ff-e8e2fcf3e667"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveVertically"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""c39934db-3c92-46c1-90af-ec60ccf971e3"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveVertically"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""8ec8647e-a5a1-42ae-9cd2-4daacc681aa2"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveVertically"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""a433a652-c2df-4a96-8c1b-d7a303ba6f62"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveVertically"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""a1e54386-0e29-4e6b-8196-9b3700d65501"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveHortizontally"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""4d149f10-f97c-457f-ba6c-d8bc2f86beea"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveHortizontally"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""938947d9-052b-46bf-9bf9-55745994afa9"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveHortizontally"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""d6b45907-f7e9-4d0c-a661-c88c34571c72"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveHortizontally"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""f971c6ef-fcea-4cfb-8f0a-83e24167c2de"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveHortizontally"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""9cf5b24b-7665-4cb9-a02f-b8ef951656c6"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveHortizontally"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -271,6 +421,8 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
         m_Standard_Shoot = m_Standard.FindAction("Shoot", throwIfNotFound: true);
         m_Standard_MoveLeft = m_Standard.FindAction("Move Left", throwIfNotFound: true);
         m_Standard_MoveRight = m_Standard.FindAction("Move Right", throwIfNotFound: true);
+        m_Standard_MoveVertically = m_Standard.FindAction("MoveVertically", throwIfNotFound: true);
+        m_Standard_MoveHortizontally = m_Standard.FindAction("MoveHortizontally", throwIfNotFound: true);
     }
 
     ~@GalacticChudInputs()
@@ -357,6 +509,8 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Standard_Shoot;
     private readonly InputAction m_Standard_MoveLeft;
     private readonly InputAction m_Standard_MoveRight;
+    private readonly InputAction m_Standard_MoveVertically;
+    private readonly InputAction m_Standard_MoveHortizontally;
     /// <summary>
     /// Provides access to input actions defined in input action map "Standard".
     /// </summary>
@@ -392,6 +546,14 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Standard/MoveRight".
         /// </summary>
         public InputAction @MoveRight => m_Wrapper.m_Standard_MoveRight;
+        /// <summary>
+        /// Provides access to the underlying input action "Standard/MoveVertically".
+        /// </summary>
+        public InputAction @MoveVertically => m_Wrapper.m_Standard_MoveVertically;
+        /// <summary>
+        /// Provides access to the underlying input action "Standard/MoveHortizontally".
+        /// </summary>
+        public InputAction @MoveHortizontally => m_Wrapper.m_Standard_MoveHortizontally;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -436,6 +598,12 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
             @MoveRight.started += instance.OnMoveRight;
             @MoveRight.performed += instance.OnMoveRight;
             @MoveRight.canceled += instance.OnMoveRight;
+            @MoveVertically.started += instance.OnMoveVertically;
+            @MoveVertically.performed += instance.OnMoveVertically;
+            @MoveVertically.canceled += instance.OnMoveVertically;
+            @MoveHortizontally.started += instance.OnMoveHortizontally;
+            @MoveHortizontally.performed += instance.OnMoveHortizontally;
+            @MoveHortizontally.canceled += instance.OnMoveHortizontally;
         }
 
         /// <summary>
@@ -465,6 +633,12 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
             @MoveRight.started -= instance.OnMoveRight;
             @MoveRight.performed -= instance.OnMoveRight;
             @MoveRight.canceled -= instance.OnMoveRight;
+            @MoveVertically.started -= instance.OnMoveVertically;
+            @MoveVertically.performed -= instance.OnMoveVertically;
+            @MoveVertically.canceled -= instance.OnMoveVertically;
+            @MoveHortizontally.started -= instance.OnMoveHortizontally;
+            @MoveHortizontally.performed -= instance.OnMoveHortizontally;
+            @MoveHortizontally.canceled -= instance.OnMoveHortizontally;
         }
 
         /// <summary>
@@ -547,5 +721,19 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMoveRight(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "MoveVertically" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMoveVertically(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "MoveHortizontally" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMoveHortizontally(InputAction.CallbackContext context);
     }
 }

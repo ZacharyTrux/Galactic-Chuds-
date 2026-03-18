@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal.Internal;
 
 public class EnemyController : MonoBehaviour {
     // set in inspector
     public float speed = 4f;
     public float destroyAtX = -11f;
+    private const float awardedPoints = 500.0f; 
 
     private void Update() {
         transform.Translate(Vector2.left * speed * Time.deltaTime);
@@ -12,15 +14,14 @@ public class EnemyController : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-        private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Player Bullet")) {
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.CompareTag("Player Bullet")) {
             Destroy(other.gameObject);
             Destroy(gameObject);
-            PlayerStats stats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
-            stats.UpdateScore(50);
+            Score.Instance.UpdateScore(awardedPoints);
         }
-        if (other.CompareTag("Player")) {
-            other.gameObject.GetComponent<PlayerStats>().DamagePlayer();
+        else if (other.gameObject.CompareTag("Player")) {
+            other.gameObject.GetComponent<Player>().DamageFromEnemy();
             Destroy(gameObject);
         }
     }

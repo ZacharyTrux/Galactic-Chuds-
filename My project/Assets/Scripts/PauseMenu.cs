@@ -6,10 +6,7 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
-        if(container != null)
-        {
-            container.SetActive(false);
-        }
+        container.SetActive(false);
         Time.timeScale = 1f;
     }
 

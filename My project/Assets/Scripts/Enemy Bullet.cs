@@ -12,9 +12,9 @@ public class EnemyBullet : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Player")) {
-            other.gameObject.GetComponent<PlayerStats>().DamagePlayer();
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.CompareTag("Player")) {
+            other.gameObject.GetComponent<Player>().DamageFromEnemy();
             Destroy(gameObject);
         }
     }
