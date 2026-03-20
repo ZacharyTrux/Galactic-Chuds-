@@ -10,7 +10,7 @@ public class GalacticChudInputs : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        var inputActions = name 
+        var inputActions = ;
     }
     void Start()
     {

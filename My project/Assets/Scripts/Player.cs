@@ -13,12 +13,16 @@ public class Player : MonoBehaviour {
     public Slider sliderHealth;
     public Shield shield;   
     public UI ui;
+    public AudioSource shoot;
+    public AudioSource damage;
+
 
 
     private GalacticChudInputs.StandardActions input;    
     private const float Y_LIMIT = 4.6f;
     private const float X_LIMIT = 8.2f;
     private float health;
+    private AudioSource audioSrc;
     
     
 
@@ -38,6 +42,7 @@ public class Player : MonoBehaviour {
         // Player Shooting
         if (input.Shoot.WasPressedThisFrame()){
             GameObject bulletObj = Instantiate(bulletPrefab, bulletSpawnPoint.position, UnityEngine.Quaternion.identity);
+            shootingSound.Play();
         }
 
         // Player Movement
@@ -66,6 +71,7 @@ public class Player : MonoBehaviour {
     }
 
     public void DamageFromEnemy(){
+<<<<<<< Updated upstream
         if (!shield.IsActive) {
             health -= 0.25f;
         }
@@ -73,5 +79,10 @@ public class Player : MonoBehaviour {
 
     public void RefillShield() {
         shield.FullRefill();
+=======
+        health -= 0.25f;
+        audioSrc.clip = damage;
+        audioSrc.Play();
+>>>>>>> Stashed changes
     }
 }
