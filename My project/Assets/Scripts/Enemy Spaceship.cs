@@ -8,6 +8,7 @@ public class Spaceship : MonoBehaviour {
     public Transform bulletSpawnPoint;
     public float fireRate = 2f;
     public float destroyAtX = -11f;
+    public GameObject expoPrefab;
 
     // private variables
     private const float awardedPoints = 1000.0f; 
@@ -53,6 +54,8 @@ public class Spaceship : MonoBehaviour {
         if (other.gameObject.CompareTag("Player Bullet")) {
             Destroy(other.gameObject);
             Destroy(gameObject);
+            var expoObj = Instantiate(expoPrefab, transform.position, Quaternion.identity); // creates explosion of enemy object
+            Destroy(expoObj, expoObj.GetComponent<ParticleSystem>().main.duration); // delete explosion after it goes off
             Score.Instance.UpdateScore(awardedPoints);
         }
         if (other.gameObject.CompareTag("Player")) {

@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
             Random.Range(enemySpawnRange.bounds.min.x, enemySpawnRange.bounds.max.x),
             Random.Range(enemySpawnRange.bounds.min.y, enemySpawnRange.bounds.max.y),
             0);
-        Instantiate(powerUpPrefab, powerUpPt, UnityEngine.Quaternion.identity);
+        //Instantiate(powerUpPrefab, powerUpPt, UnityEngine.Quaternion.identity);
     }
 
     void Update(){
@@ -53,7 +53,9 @@ public class GameManager : MonoBehaviour
             SpawnRandomEnemy();
             enemySpawnTimer = 0.0f;
         }
+    }
 
-        powerUp
+    void GameOver(){
+        
     }
 }

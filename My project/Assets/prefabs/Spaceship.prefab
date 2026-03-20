@@ -144,6 +144,7 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 4173927745198453616}
   fireRate: 2
   destroyAtX: -11
+  expoPrefab: {fileID: 1672928346868709509, guid: 05a6c858c2093f44ba122cd39b8e96d8, type: 3}
 --- !u!60 &8694140187520712743
 PolygonCollider2D:
   m_ObjectHideFlags: 0

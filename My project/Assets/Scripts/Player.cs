@@ -1,6 +1,7 @@
 using System.Numerics;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 
@@ -10,6 +11,7 @@ public class Player : MonoBehaviour {
     public GameObject bulletPrefab;
     public Transform bulletSpawnPoint;
     public Slider sliderHealth;
+    public UI ui;
 
 
     private GalacticChudInputs.StandardActions input;    
@@ -64,5 +66,6 @@ public class Player : MonoBehaviour {
 
     public void DamageFromEnemy(){
         health -= 0.25f;
+        
     }
 }
