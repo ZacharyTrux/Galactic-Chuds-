@@ -1,20 +1,22 @@
-using System.Numerics;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
 using UnityEngine;
+
+[System.Serializable]
+public class EnemyType{
+    public GameObject prefab;
+    public int weight;
+}
 
 public class GameManager : MonoBehaviour
 {
     public float enemySpawnDelay;
-    public class EnemyType{
-        public GameObject prefab;
-        public int weight;
-    }
-    
+    public float powerUpSpawnDelay;
+    public GameObject powerUpPrefab;
+
     public EnemyType[] enemies;
     public BoxCollider2D enemySpawnRange;
 
     private float enemySpawnTimer;
+    private float powerUpSpawnTimer;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void SpawnRandomEnemy(){
@@ -52,6 +54,12 @@ public class GameManager : MonoBehaviour
         if(enemySpawnTimer >= enemySpawnDelay){
             SpawnRandomEnemy();
             enemySpawnTimer = 0.0f;
+        }
+
+        powerUpSpawnTimer += Time.deltaTime;
+        if (powerUpSpawnTimer >= powerUpSpawnDelay) {
+            spawnPowerUp();
+            powerUpSpawnTimer = 0.0f;
         }
     }
 

@@ -163,6 +163,15 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shield"",
+                    ""type"": ""Button"",
+                    ""id"": ""69e2d28f-a0b4-4b4e-b02e-64da1368a4b5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -407,6 +416,28 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
                     ""action"": ""MoveHortizontally"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d50c27f-1fb9-447c-b06b-82ac37eef983"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shield"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b153551e-63f9-49e6-9933-ba1d460c801d"",
+                    ""path"": ""<Keyboard>/rightShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shield"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -423,6 +454,7 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
         m_Standard_MoveRight = m_Standard.FindAction("Move Right", throwIfNotFound: true);
         m_Standard_MoveVertically = m_Standard.FindAction("MoveVertically", throwIfNotFound: true);
         m_Standard_MoveHortizontally = m_Standard.FindAction("MoveHortizontally", throwIfNotFound: true);
+        m_Standard_Shield = m_Standard.FindAction("Shield", throwIfNotFound: true);
     }
 
     ~@GalacticChudInputs()
@@ -511,6 +543,7 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Standard_MoveRight;
     private readonly InputAction m_Standard_MoveVertically;
     private readonly InputAction m_Standard_MoveHortizontally;
+    private readonly InputAction m_Standard_Shield;
     /// <summary>
     /// Provides access to input actions defined in input action map "Standard".
     /// </summary>
@@ -554,6 +587,10 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Standard/MoveHortizontally".
         /// </summary>
         public InputAction @MoveHortizontally => m_Wrapper.m_Standard_MoveHortizontally;
+        /// <summary>
+        /// Provides access to the underlying input action "Standard/Shield".
+        /// </summary>
+        public InputAction @Shield => m_Wrapper.m_Standard_Shield;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -604,6 +641,9 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
             @MoveHortizontally.started += instance.OnMoveHortizontally;
             @MoveHortizontally.performed += instance.OnMoveHortizontally;
             @MoveHortizontally.canceled += instance.OnMoveHortizontally;
+            @Shield.started += instance.OnShield;
+            @Shield.performed += instance.OnShield;
+            @Shield.canceled += instance.OnShield;
         }
 
         /// <summary>
@@ -639,6 +679,9 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
             @MoveHortizontally.started -= instance.OnMoveHortizontally;
             @MoveHortizontally.performed -= instance.OnMoveHortizontally;
             @MoveHortizontally.canceled -= instance.OnMoveHortizontally;
+            @Shield.started -= instance.OnShield;
+            @Shield.performed -= instance.OnShield;
+            @Shield.canceled -= instance.OnShield;
         }
 
         /// <summary>
@@ -735,5 +778,12 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMoveHortizontally(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Shield" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnShield(InputAction.CallbackContext context);
     }
 }

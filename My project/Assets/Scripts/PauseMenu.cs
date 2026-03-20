@@ -4,8 +4,15 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject container;
 
+    private GalacticChudInputs.StandardActions input;
+
     void Start()
     {
+        var inputActions = new GalacticChudInputs();
+        inputActions.Enable();
+        input = inputActions.Standard;
+        input.Enable();
+
         container.SetActive(false);
         Time.timeScale = 1f;
     }
@@ -13,8 +20,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (Player.inputActions.Standard.Pause.IsPressed())
+        if (input.Pause.WasPressedThisFrame())
         {
             container.SetActive(true);
             Time.timeScale = 0f;

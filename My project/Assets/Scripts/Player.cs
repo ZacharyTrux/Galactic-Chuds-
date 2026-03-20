@@ -1,5 +1,5 @@
-using System.Numerics;
 using UnityEngine.UI;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
     public GameObject bulletPrefab;
     public Transform bulletSpawnPoint;
     public Slider sliderHealth;
+    public Shield shield;   
     public UI ui;
 
 
@@ -65,7 +66,12 @@ public class Player : MonoBehaviour {
     }
 
     public void DamageFromEnemy(){
-        health -= 0.25f;
-        
+        if (!shield.IsActive) {
+            health -= 0.25f;
+        }
+    }
+
+    public void RefillShield() {
+        shield.FullRefill();
     }
 }
