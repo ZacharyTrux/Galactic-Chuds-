@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     public EnemyType[] enemies;
     public BoxCollider2D enemySpawnRange;
+    public UI ui;
+
 
     private float enemySpawnTimer;
     private float powerUpSpawnTimer;
@@ -50,6 +52,10 @@ public class GameManager : MonoBehaviour
     }
 
     void Update(){
+        if(Inputs.Instance.input.Pause.WasPressedThisFrame()){
+            ui.PauseGame();
+        }
+
         enemySpawnTimer += Time.deltaTime;
         if(enemySpawnTimer >= enemySpawnDelay){
             SpawnRandomEnemy();
