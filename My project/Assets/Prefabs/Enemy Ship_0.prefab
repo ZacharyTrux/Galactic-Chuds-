@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 8406705518808594825}
   - component: {fileID: 725713998152847830}
   - component: {fileID: 7931794935765887062}
+  - component: {fileID: 9152443691032137575}
   m_Layer: 0
   m_Name: Enemy Ship_0
   m_TagString: Enemy
@@ -361,8 +362,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spaceship
   VerticalSpeed: 3
   HorizontalSpeed: 0.5
-  enemyBulletPrefab: {fileID: 8591756820651368749, guid: 21a232aea2e328a4892104566cb44a36, type: 3}
+  enemyBulletPrefab: {fileID: 2301545309820664937, guid: 4619d31b9c9d08c4cbf3a60f6f408126, type: 3}
   bulletSpawnPoint: {fileID: 2749415606941287902}
   fireRate: 2
   destroyAtX: -11
   expoPrefab: {fileID: 1672928346868709509, guid: 05a6c858c2093f44ba122cd39b8e96d8, type: 3}
+--- !u!111 &9152443691032137575
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7590894045918298821}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0

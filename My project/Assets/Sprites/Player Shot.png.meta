@@ -40,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -103,45 +103,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: result (7)_0
+      name: Player Shot_0
       rect:
         serializedVersion: 2
-        x: 30
-        y: 70
-        width: 363
-        height: 139
+        x: 31
+        y: 71
+        width: 361
+        height: 137
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 294be6bf62db127d0800000000000000
-      internalID: -2944864706198850414
+      spriteID: 8ec8f164b0ccc084b9d723ef169bfc9b
+      internalID: 1409309613
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: result (7)_1
+      name: Player Shot_1
       rect:
         serializedVersion: 2
-        x: 457
-        y: 56
-        width: 185
-        height: 164
+        x: 458
+        y: 57
+        width: 183
+        height: 162
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e5016ecf2ea090fb0800000000000000
-      internalID: -4681198367653097378
+      spriteID: c4091fe165855df43ba58a6e0fca5173
+      internalID: 1547374477
       vertices: []
       indices: 
       edges: []
@@ -150,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d379f4c955d45354a8583ef88758642a
     internalID: 0
     vertices: []
     indices: 
@@ -158,10 +158,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      result (7)_0: -2944864706198850414
-      result (7)_1: -4681198367653097378
+      Player Shot_0: 1409309613
+      Player Shot_1: 1547374477
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
