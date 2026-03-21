@@ -13,45 +13,45 @@ public class Player : MonoBehaviour {
     public Slider sliderHealth;
     public Shield shield;   
     public UI ui;
-    public AudioSource shoot;
-    public AudioSource damage;
+    //public AudioSource shoot;
+    //public AudioSource damage;
 
 
 
-    private GalacticChudInputs.StandardActions input;    
+    private Inputs input;    
     private const float Y_LIMIT = 4.6f;
     private const float X_LIMIT = 8.2f;
     private float health;
-    private AudioSource audioSrc;
+    //private AudioSource audioSrc;
     
     
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start(){
-        var inputActions = new GalacticChudInputs();
-        inputActions.Enable();
-        input = inputActions.Standard;
-        input.Enable();
         health = 1.0f;
     }
 
     // Update is called once per frame
     void Update(){
         sliderHealth.value = health;
+
         // Player Shooting
-        if (input.Shoot.WasPressedThisFrame()){
+        if (Inputs.Instance.input.Shoot.WasPressedThisFrame()){
             GameObject bulletObj = Instantiate(bulletPrefab, bulletSpawnPoint.position, UnityEngine.Quaternion.identity);
-            shootingSound.Play();
+            //shootingSound.Play();
         }
 
         // Player Movement
-        var vertMove = input.MoveVertically.ReadValue<float>();
-        var horizontalMove = input.MoveHortizontally.ReadValue<float>();
+        var vertMove = Inputs.Instance.input.MoveVertically.ReadValue<float>();
+        var horizontalMove = Inputs.Instance.input.MoveHortizontally.ReadValue<float>();
         this.transform.Translate(UnityEngine.Vector3.up * speed * Time.deltaTime * vertMove);
         this.transform.Translate(UnityEngine.Vector3.right * speed * Time.deltaTime * horizontalMove);
-
+        CheckBounds();
         // Ensure player does not go off screen
+    }
+
+    private void CheckBounds(){
         if (this.transform.position.y > Y_LIMIT)
         {
             this.transform.position = new UnityEngine.Vector3(transform.position.x, Y_LIMIT);
@@ -71,18 +71,19 @@ public class Player : MonoBehaviour {
     }
 
     public void DamageFromEnemy(){
-<<<<<<< Updated upstream
         if (!shield.IsActive) {
             health -= 0.25f;
         }
+
+        if(health <= 0){
+            ui.ShowGameOver();
+        }
+        //audioSrc.clip = damage;
+        //audioSrc.Play();
     }
 
     public void RefillShield() {
         shield.FullRefill();
-=======
-        health -= 0.25f;
-        audioSrc.clip = damage;
-        audioSrc.Play();
->>>>>>> Stashed changes
+        
     }
 }
