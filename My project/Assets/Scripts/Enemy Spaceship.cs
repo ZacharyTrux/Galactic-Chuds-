@@ -9,17 +9,23 @@ public class Spaceship : MonoBehaviour {
     public float fireRate = 2f;
     public float destroyAtX = -11f;
     public GameObject expoPrefab;
+    public AudioClip shootingClip;
+    public AudioClip explosionClip;
 
     // private variables
     private const float awardedPoints = 1000.0f; 
     private bool isMovingUp = true;
     private float timeUntilNextShot = 0f;
     private const float Y_LIMIT = 4.6f;
+    private AudioSource audioSrc;
+
+    private void Start(){
+        audioSrc = GetComponent<AudioSource>();
+    }
 
     private void Update() {
         
         // Spaceship Movement
-
         transform.Translate(Vector2.left * HorizontalSpeed * Time.deltaTime);
 
         if (isMovingUp == true) {
@@ -43,24 +49,31 @@ public class Spaceship : MonoBehaviour {
 
         // 2. If the timer hits 0 (or goes below), shoot!
         if (timeUntilNextShot <= 0f) {
-            Instantiate(enemyBulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
+            Instantiate(enemyBulletPrefab, bulletSpawnPoint.position, UnityEngine.Quaternion.identity);
+            audioSrc.clip = shootingClip;
+            audioSrc.Play();
             
             // 3. Reset the timer back to your fireRate (2 seconds)
             timeUntilNextShot = fireRate;
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
+    private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player Bullet")) {
+            Score.instance.UpdateScore(awardedPoints);
+            audioSrc.clip = explosionClip;
+            audioSrc.Play();
+
+            var expoObj = Instantiate(expoPrefab, transform.position, UnityEngine.Quaternion.identity); // creates explosion of enemy object
+            Destroy(expoObj, expoObj.GetComponent<ParticleSystem>().main.duration); // delete explosion after it goes off
+            
             Destroy(other.gameObject);
             Destroy(gameObject);
-            var expoObj = Instantiate(expoPrefab, transform.position, Quaternion.identity); // creates explosion of enemy object
-            Destroy(expoObj, expoObj.GetComponent<ParticleSystem>().main.duration); // delete explosion after it goes off
-            Score.Instance.UpdateScore(awardedPoints);
         }
-        if (other.gameObject.CompareTag("Player")) {
-            Destroy(gameObject);
+
+        else if (other.gameObject.CompareTag("Player")) {
             other.gameObject.GetComponent<Player>().DamageFromEnemy();
+            Destroy(gameObject);
         }
     }
 }

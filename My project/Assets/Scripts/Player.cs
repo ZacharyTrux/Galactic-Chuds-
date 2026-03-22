@@ -13,8 +13,9 @@ public class Player : MonoBehaviour {
     public Slider sliderHealth;
     public Shield shield;   
     public UI ui;
-    //public AudioSource shoot;
-    //public AudioSource damage;
+    public GameObject expoPrefab;
+    public AudioClip shootingSound;
+    public AudioClip damage;
 
 
 
@@ -22,14 +23,13 @@ public class Player : MonoBehaviour {
     private const float Y_LIMIT = 4.6f;
     private const float X_LIMIT = 8.2f;
     private float health;
-    //private AudioSource audioSrc;
-    
-    
+    private AudioSource audioSrc;
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start(){
         health = 1.0f;
+        audioSrc = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -39,7 +39,8 @@ public class Player : MonoBehaviour {
         // Player Shooting
         if (Inputs.Instance.input.Shoot.WasPressedThisFrame()){
             GameObject bulletObj = Instantiate(bulletPrefab, bulletSpawnPoint.position, UnityEngine.Quaternion.identity);
-            //shootingSound.Play();
+            audioSrc.clip = shootingSound;
+            audioSrc.Play();
         }
 
         // Player Movement
@@ -47,8 +48,7 @@ public class Player : MonoBehaviour {
         var horizontalMove = Inputs.Instance.input.MoveHortizontally.ReadValue<float>();
         this.transform.Translate(UnityEngine.Vector3.up * speed * Time.deltaTime * vertMove);
         this.transform.Translate(UnityEngine.Vector3.right * speed * Time.deltaTime * horizontalMove);
-        CheckBounds();
-        // Ensure player does not go off screen
+        CheckBounds(); // Ensure player does not go off screen
     }
 
     private void CheckBounds(){
@@ -71,19 +71,30 @@ public class Player : MonoBehaviour {
     }
 
     public void DamageFromEnemy(){
+        /*
         if (!shield.IsActive) {
             health -= 0.25f;
         }
+        */
+        health -= 0.25f;
 
         if(health <= 0){
+            sliderHealth.value = health;
+            GameOver();
             ui.ShowGameOver();
         }
-        //audioSrc.clip = damage;
-        //audioSrc.Play();
+        audioSrc.clip = damage;
+        audioSrc.Play();
     }
 
     public void RefillShield() {
         shield.FullRefill();
-        
     }
+
+    private void GameOver(){
+        Destroy(gameObject);
+        var expoObj = Instantiate(expoPrefab, transform.position, UnityEngine.Quaternion.identity); // creates explosion of enemy object
+        Destroy(expoObj, expoObj.GetComponent<ParticleSystem>().main.duration); // delete explosion after it goes off
+    }
+
 }

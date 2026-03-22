@@ -166,7 +166,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -447,11 +447,14 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 1.2407148, y: 0.028416686}
+      - {x: 0.011490077, y: 0.46327904}
+      - {x: -0.31786573, y: 0.7470291}
       - {x: -0.82150674, y: 0.80396384}
       - {x: -0.8880344, y: -0.047907755}
       - {x: -0.82891935, y: -0.91191304}
+      - {x: -0.4271918, y: -0.92948014}
       - {x: 0.24991408, y: -0.48268557}
-      - {x: 1.2845834, y: -0.06561847}
+      - {x: 1.2900141, y: -0.11992508}
   m_UseDelaunayMesh: 1
 --- !u!114 &357756900
 MonoBehaviour:
@@ -471,6 +474,9 @@ MonoBehaviour:
   sliderHealth: {fileID: 470269650}
   shield: {fileID: 0}
   ui: {fileID: 1000347975}
+  expoPrefab: {fileID: 1672928346868709509, guid: 05a6c858c2093f44ba122cd39b8e96d8, type: 3}
+  shootingSound: {fileID: 8300000, guid: 8ca7e95ea9d9b8e4aa7290beb1d8d1f6, type: 3}
+  damage: {fileID: 8300000, guid: ae881082345af344f96172cb9b542b7a, type: 3}
 --- !u!82 &357756901
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2818,14 +2824,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba29bbf88eff3a4cb57fd45509975d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  enemySpawnDelay: 5
+  enemySpawnDelay: 2
   powerUpSpawnDelay: 0
   powerUpPrefab: {fileID: 0}
   enemies:
   - prefab: {fileID: 5531333530679152009, guid: 920139e6d23bd3544941160b6aa1c1bf, type: 3}
-    weight: 80
-  - prefab: {fileID: 7590894045918298821, guid: 90684648c9f61984e9e2818e57fb4a22, type: 3}
-    weight: 40
+    weight: 50
+  - prefab: {fileID: 8774180509155017812, guid: 59e585d0eac6d3049ae1cb5871f187a2, type: 3}
+    weight: 70
   enemySpawnRange: {fileID: 65006758}
   ui: {fileID: 1000347975}
 --- !u!4 &1011439833
@@ -3323,6 +3329,7 @@ GameObject:
   - component: {fileID: 1195682247}
   - component: {fileID: 1195682249}
   - component: {fileID: 1195682248}
+  - component: {fileID: 1195682250}
   m_Layer: 5
   m_Name: Image - Score Background
   m_TagString: Untagged
@@ -3388,6 +3395,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195682246}
   m_CullTransparentMesh: 1
+--- !u!114 &1195682250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195682246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ec71f787e828049bc261957858e8eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Score
 --- !u!1 &1213904752
 GameObject:
   m_ObjectHideFlags: 0
@@ -4660,7 +4679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1936976084
 RectTransform:
   m_ObjectHideFlags: 0

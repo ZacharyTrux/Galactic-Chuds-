@@ -14,14 +14,12 @@ public class EnemyController : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-    private void OnCollisionEnter2D(Collision2D other) {
+    private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player Bullet")) {
             Destroy(other.gameObject);
-            Destroy(gameObject);
-            Score.Instance.UpdateScore(awardedPoints);
         }
         else if (other.gameObject.CompareTag("Player")) {
-            other.gameObject.GetComponent<Player>().DamageFromEnemy();
+            other.gameObject.GetComponentInParent<Player>().DamageFromEnemy();
             Destroy(gameObject);
         }
     }

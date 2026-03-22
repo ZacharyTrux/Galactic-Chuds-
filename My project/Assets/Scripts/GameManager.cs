@@ -68,8 +68,4 @@ public class GameManager : MonoBehaviour
             powerUpSpawnTimer = 0.0f;
         }
     }
-
-    void GameOver(){
-        
-    }
 }

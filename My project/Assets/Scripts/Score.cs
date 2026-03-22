@@ -5,20 +5,20 @@ public class Score : MonoBehaviour
 {
     private TextMeshProUGUI txtScore;
     private float score;
-    public static Score Instance { get; private set; }
+    public static Score instance { get; private set; }
 
     // retrieve the text box containing score text box
-    void Start()
+    void Awake()
     {
         txtScore = GetComponentInChildren<TextMeshProUGUI>();
         score = 0.0f;
-        Instance = this;
+        instance = this;
     }
 
     // Update is the UI every frame
     void Update()
     {
-        txtScore.text = score.ToString();
+        txtScore.text = ((int)score).ToString("D8");
     }
 
     // Update the score based on enemy killed (newScore)
