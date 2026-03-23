@@ -25,4 +25,8 @@ public class Score : MonoBehaviour
     public void UpdateScore(float newScore){
         score += newScore;
     }
+
+    public float getScore(){
+        return score;
+    }
 }

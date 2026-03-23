@@ -8,6 +8,7 @@ public class BossLaser : MonoBehaviour
     public int totalSafeZones = 2;
 
     private BoxCollider2D[] spawnLocations;
+    
 
     void Start(){
         spawnLocations = LocationContainer.GetComponentsInChildren<BoxCollider2D>();
@@ -31,4 +32,5 @@ public class BossLaser : MonoBehaviour
             Instantiate(laserPrefab, spawnPos, Quaternion.Euler(0,0,180));
         }
     }
+    
 }

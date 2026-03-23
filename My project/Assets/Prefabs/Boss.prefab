@@ -553,6 +553,7 @@ GameObject:
   - component: {fileID: 6512995521093795680}
   - component: {fileID: 4657200505956102565}
   - component: {fileID: 3799484003913531215}
+  - component: {fileID: -7152523869135541774}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -703,6 +704,23 @@ MonoBehaviour:
   laserPrefab: {fileID: 5396498706628886314, guid: 31e55cbd7f9324a499b9a7368c6d7dfe, type: 3}
   LocationContainer: {fileID: 2965193132674604382}
   totalSafeZones: 2
+--- !u!111 &-7152523869135541774
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021709181613300984}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: 7b8a7dde72ed6cf4d8b4f5c00342285e, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 7b8a7dde72ed6cf4d8b4f5c00342285e, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 1
+  m_CullingType: 0
 --- !u!1 &4376115078950663095
 GameObject:
   m_ObjectHideFlags: 0

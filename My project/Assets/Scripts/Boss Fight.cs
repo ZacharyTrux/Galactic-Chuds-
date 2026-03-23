@@ -81,5 +81,15 @@ public class BossFight : MonoBehaviour{
         missileHits = 0;
     }
 
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.CompareTag("Player Bullet")) {
+            takeDamage(0.05f, "Bullet");
+        }
+        else{
+            takeDamage(0f, "Missile");
+        }
+        Destroy(other.gameObject);
+    }
+
 
 }

@@ -8,14 +8,16 @@ public class EnemyType{
 
 public class GameManager : MonoBehaviour
 {
+    public string currState = "Traversal";
+    public float scoreToStartBoss = 5000;
     public float enemySpawnDelay;
     public float powerUpSpawnDelay;
     public GameObject powerUpPrefab;
 
     public EnemyType[] enemies;
+    public GameObject boss;
     public BoxCollider2D enemySpawnRange;
     public UI ui;
-
 
     private float enemySpawnTimer;
     private float powerUpSpawnTimer;
@@ -42,8 +44,7 @@ public class GameManager : MonoBehaviour
         }    
     }
 
-    void spawnPowerUp()
-    {
+    void spawnPowerUp(){
         UnityEngine.Vector3 powerUpPt = new UnityEngine.Vector3(
             Random.Range(enemySpawnRange.bounds.min.x, enemySpawnRange.bounds.max.x),
             Random.Range(enemySpawnRange.bounds.min.y, enemySpawnRange.bounds.max.y),
@@ -56,7 +57,12 @@ public class GameManager : MonoBehaviour
             ui.PauseGame();
         }
 
-        if(BossFight.Instance != null){
+        if(currState == "Traversal" && Score.instance.getScore() >= scoreToStartBoss){
+            currState = "Boss Fight";
+            Instantiate(boss, enemySpawnRange.bounds.center, UnityEngine.Quaternion.identity);
+        }
+
+        if(currState == "Traversal"){
             enemySpawnTimer += Time.deltaTime;
             if(enemySpawnTimer >= enemySpawnDelay){
                 SpawnRandomEnemy();

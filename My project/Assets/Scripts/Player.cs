@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour {
     // set in inspector
+    public float iFrames = 3f;
     public float speed = 5f;
     public GameObject bulletPrefab;
     public GameObject misslePrefab;
@@ -25,6 +26,9 @@ public class Player : MonoBehaviour {
     private const float Y_LIMIT = 4.6f;
     private const float X_LIMIT = 8.2f;
     private float health;
+    private bool isInvincible = false;
+    private SpriteRenderer sprite;
+    
     private AudioSource audioSrc;
 
     
@@ -32,6 +36,7 @@ public class Player : MonoBehaviour {
     void Start(){
         health = 1.0f;
         audioSrc = GetComponent<AudioSource>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -78,12 +83,14 @@ public class Player : MonoBehaviour {
     }
 
     public void DamageFromEnemy(){
+        if(isInvincible) return;
         /*
         if (!shield.IsActive) {
             health -= 0.25f;
         }
         */
         health -= 0.25f;
+        StartCoroutine(IFramesEnabled());
 
         if(health <= 0){
             sliderHealth.value = health;
@@ -96,6 +103,18 @@ public class Player : MonoBehaviour {
 
     public void RefillShield() {
         shield.FullRefill();
+    }
+
+    private System.Collections.IEnumerator IFramesEnabled(){
+        isInvincible = true;
+        for(int i = 0; i < 4; i++){
+            sprite.color = new Color(1,1,1, 0.2f);
+            yield return new WaitForSeconds(iFrames / 8);
+            sprite.color = new Color(1,1,1, 1);
+            yield return new WaitForSeconds(iFrames / 8);
+        }
+
+        isInvincible = false;
     }
 
     private void GameOver(){
