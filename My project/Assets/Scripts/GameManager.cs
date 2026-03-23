@@ -18,9 +18,18 @@ public class GameManager : MonoBehaviour
     public GameObject boss;
     public BoxCollider2D enemySpawnRange;
     public UI ui;
+    public AudioClip bossTheme;
+    public AudioClip traversalTheme;
 
     private float enemySpawnTimer;
     private float powerUpSpawnTimer;
+    private AudioSource audioSrc;
+
+    void Start(){
+        audioSrc = GetComponent<AudioSource>();
+        audioSrc.clip = traversalTheme;
+        audioSrc.Play();
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void SpawnRandomEnemy(){
@@ -58,6 +67,9 @@ public class GameManager : MonoBehaviour
         }
 
         if(currState == "Traversal" && Score.instance.getScore() >= scoreToStartBoss){
+            audioSrc.Stop();
+            audioSrc.clip = bossTheme;
+            audioSrc.Play();
             currState = "Boss Fight";
             Instantiate(boss, enemySpawnRange.bounds.center, UnityEngine.Quaternion.identity);
         }
