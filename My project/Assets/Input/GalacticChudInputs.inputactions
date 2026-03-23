@@ -7,24 +7,6 @@
             "id": "bf1aef29-75d1-4db9-b465-c94b2a53b542",
             "actions": [
                 {
-                    "name": "Move Up",
-                    "type": "Button",
-                    "id": "28b3620b-8807-449d-90ff-08e2dccc3f97",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Move Down",
-                    "type": "Button",
-                    "id": "2bc0815f-adcc-498e-966f-b7c1103fb5fc",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "48bb83f7-ea74-4e65-bf78-10981edb0791",
@@ -41,24 +23,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Move Left",
-                    "type": "Button",
-                    "id": "00b3897f-6518-48c8-b4b9-4b3651cb2618",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Move Right",
-                    "type": "Button",
-                    "id": "edd8b180-9806-4259-839d-6f9de716da96",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 },
                 {
                     "name": "MoveVertically",
@@ -86,53 +50,18 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Missle",
+                    "type": "Button",
+                    "id": "7ba4f119-0971-41d6-8b1a-f305cad73bb3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "9086cfb8-45aa-46f8-be39-7e303fc3b2c1",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move Up",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "110aebbe-be61-4e5c-b57b-b8f24eaf025c",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move Up",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0ef9dbf6-7d97-40ad-8308-f7642bca9861",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move Down",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "45ae5b25-1f0a-4061-b6e8-5d5347939a3a",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move Down",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "2551106e-8f1f-42f3-a69e-94d7e34ca2e7",
@@ -152,50 +81,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "95d92d52-9db6-4b01-96a8-fe7e2ba747a8",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move Left",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5455c292-0c5f-4a4b-a41e-087021d4ab42",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move Left",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "db8b3a99-5f4d-4c2d-8bef-876d7e53398d",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move Right",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "0e83b9f4-ee39-4df3-ad2b-71c41b46754c",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move Right",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -350,6 +235,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Shield",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "614bc82d-5784-46c8-85f6-0e0c6891480f",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Missle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

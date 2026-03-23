@@ -9,12 +9,14 @@ public class Player : MonoBehaviour {
     // set in inspector
     public float speed = 5f;
     public GameObject bulletPrefab;
+    public GameObject misslePrefab;
     public Transform bulletSpawnPoint;
     public Slider sliderHealth;
     public Shield shield;   
     public UI ui;
     public GameObject expoPrefab;
     public AudioClip shootingSound;
+    public AudioClip missleFireSound;
     public AudioClip damage;
 
 
@@ -40,6 +42,11 @@ public class Player : MonoBehaviour {
         if (Inputs.Instance.input.Shoot.WasPressedThisFrame()){
             GameObject bulletObj = Instantiate(bulletPrefab, bulletSpawnPoint.position, UnityEngine.Quaternion.identity);
             audioSrc.clip = shootingSound;
+            audioSrc.Play();
+        }
+        else if(Inputs.Instance.input.Missle.WasPressedThisFrame()){
+            GameObject missleObj = Instantiate(misslePrefab, bulletSpawnPoint.position, UnityEngine.Quaternion.identity);
+            audioSrc.clip = missleFireSound;
             audioSrc.Play();
         }
 

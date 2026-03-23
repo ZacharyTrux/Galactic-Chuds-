@@ -56,16 +56,18 @@ public class GameManager : MonoBehaviour
             ui.PauseGame();
         }
 
-        enemySpawnTimer += Time.deltaTime;
-        if(enemySpawnTimer >= enemySpawnDelay){
-            SpawnRandomEnemy();
-            enemySpawnTimer = 0.0f;
-        }
+        if(BossFight.Instance != null){
+            enemySpawnTimer += Time.deltaTime;
+            if(enemySpawnTimer >= enemySpawnDelay){
+                SpawnRandomEnemy();
+                enemySpawnTimer = 0.0f;
+            }
 
-        powerUpSpawnTimer += Time.deltaTime;
-        if (powerUpSpawnTimer >= powerUpSpawnDelay) {
-            spawnPowerUp();
-            powerUpSpawnTimer = 0.0f;
+            powerUpSpawnTimer += Time.deltaTime;
+            if (powerUpSpawnTimer >= powerUpSpawnDelay) {
+                spawnPowerUp();
+                powerUpSpawnTimer = 0.0f;
+            }
         }
     }
 }

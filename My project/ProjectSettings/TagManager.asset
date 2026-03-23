@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Player Bullet
+  - Enemy
+  - Powerup
+  - Boss
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Missle : MonoBehaviour
 {
     public float speed = 10f;
 
