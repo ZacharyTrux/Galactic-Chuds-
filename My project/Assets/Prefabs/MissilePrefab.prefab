@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2751968979150379354}
   m_Layer: 0
   m_Name: MissilePrefab
-  m_TagString: Player Bullet
+  m_TagString: Missile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Missle
   speed: 10
+  turnSpeed: 400
 --- !u!1 &8416168540121694995
 GameObject:
   m_ObjectHideFlags: 0

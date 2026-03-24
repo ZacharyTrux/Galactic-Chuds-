@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - Powerup
   - Boss
+  - Missile
+  - Enemy Bullet
+  - Shield
   layers:
   - Default
   - TransparentFX

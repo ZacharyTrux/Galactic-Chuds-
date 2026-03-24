@@ -45,28 +45,32 @@ public class Spaceship : MonoBehaviour {
         }
 
         
-// 1. Tick the timer down every frame
+        // Spaceship Shooting
         timeUntilNextShot -= Time.deltaTime;
 
-        // 2. If the timer hits 0 (or goes below), shoot!
-        if (timeUntilNextShot <= 0f && transform.position.x >= 9) {
+        
+        if (timeUntilNextShot <= 0f && transform.position.x <= 8) {
             Instantiate(enemyBulletPrefab, bulletSpawnPoint.position, UnityEngine.Quaternion.identity);
             audioSrc.clip = shootingAudio;
             audioSrc.Play();
             
-            // 3. Reset the timer back to your fireRate (2 seconds)
+            
             timeUntilNextShot = fireRate;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.CompareTag("Player Bullet")){
+        if (other.gameObject.CompareTag("Player Bullet") || other.gameObject.CompareTag("Missile") ){
             Destroy(other.gameObject);
             Score.Instance.UpdateScore(awardedPoints);
             AudioSource.PlayClipAtPoint(explosionAudio, transform.position);
 
             var expoObj = Instantiate(expoPrefab, transform.position, UnityEngine.Quaternion.identity); // creates explosion of enemy object
             Destroy(expoObj, expoObj.GetComponent<ParticleSystem>().main.duration); // delete explosion after it goes off
+            Destroy(gameObject);
+        }
+
+        else if (other.gameObject.CompareTag("Shield")){
             Destroy(gameObject);
         }
 

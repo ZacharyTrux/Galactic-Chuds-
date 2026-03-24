@@ -27,6 +27,7 @@ public class Player : MonoBehaviour {
     private const float X_LIMIT = 8.2f;
     private float health;
     private bool isInvincible = false;
+    private int homingShotsRemaining = 0;
     private SpriteRenderer sprite;
     private AudioSource audioSrc;
 
@@ -43,7 +44,12 @@ public class Player : MonoBehaviour {
 
         // Player Shooting bullets/missile
         if (Inputs.Instance.input.Shoot.WasPressedThisFrame()){
-            GameObject bulletObj = Instantiate(bulletPrefab, bulletSpawnPoint.position, UnityEngine.Quaternion.identity);
+            if (homingShotsRemaining > 0) {
+                Instantiate(missilePrefab, bulletSpawnPoint.position, UnityEngine.Quaternion.identity);
+                homingShotsRemaining--;
+            } else {
+                Instantiate(bulletPrefab, bulletSpawnPoint.position, UnityEngine.Quaternion.identity);
+            }
             audioSrc.clip = shootingSound;
             audioSrc.Play();
         }
@@ -98,6 +104,10 @@ public class Player : MonoBehaviour {
         }
         audioSrc.clip = damage;
         audioSrc.Play();
+    }
+
+    public void ActivateHomingShots(int count) {
+        homingShotsRemaining += count;
     }
 
     public void RefillShield() {

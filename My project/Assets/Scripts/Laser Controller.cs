@@ -54,7 +54,10 @@ public class LaserController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
-            other.gameObject.GetComponentInParent<Player>().DamageFromEnemy();   
+            Player player = other.gameObject.GetComponentInParent<Player>();
+            if (!player.shield.IsActive) { // only damage player if shield is not active
+                player.DamageFromEnemy();
+            }
         }
     }
 }

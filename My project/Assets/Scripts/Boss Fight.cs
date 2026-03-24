@@ -107,7 +107,8 @@ public class BossFight : MonoBehaviour{
             Destroy(other.gameObject);
             ShieldedPhaseDamage();
         }
-
+        else if(other.CompareTag("Shield")){
+        }
         else if(other.CompareTag("Player")){
             other.gameObject.GetComponent<Player>().DamageFromEnemy();
         }

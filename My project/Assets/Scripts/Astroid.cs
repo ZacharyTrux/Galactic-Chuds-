@@ -13,9 +13,11 @@ public class EnemyController : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D other){ // Collision detection
-        if (other.gameObject.CompareTag("Player Bullet")){ // delete bullets
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.CompareTag("Shield")) {
+            Destroy(gameObject);
+        }
+        else if (other.gameObject.CompareTag("Player Bullet")) {
             Destroy(other.gameObject);
         }
         else if (other.gameObject.CompareTag("Player")){ // damage player 

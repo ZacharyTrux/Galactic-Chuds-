@@ -13,7 +13,10 @@ public class EnemyBullet : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.CompareTag("Player")) {
+        if (other.gameObject.CompareTag("Shield")) {
+            Destroy(gameObject);
+        }
+        else if (other.gameObject.CompareTag("Player")) {
             other.gameObject.GetComponent<Player>().DamageFromEnemy();
             Destroy(gameObject);
         }
