@@ -6,10 +6,12 @@ public class EnemyType{
     public int weight;
 }
 
+public enum GameState {Traversal, Boss, Menu}
+
 public class GameManager : MonoBehaviour
 {
-    public string currState = "Traversal";
-    public float scoreToStartBoss = 5000;
+    public GameState currState = GameState.Menu;
+    public float scoreToStartBoss = 7000;
     public float enemySpawnDelay;
     public float powerUpSpawnDelay;
     public GameObject powerUpPrefab;
@@ -20,15 +22,19 @@ public class GameManager : MonoBehaviour
     public UI ui;
     public AudioClip bossTheme;
     public AudioClip traversalTheme;
+    public AudioClip victoryTheme;
 
     private float enemySpawnTimer;
     private float powerUpSpawnTimer;
     private AudioSource audioSrc;
 
+    public static GameManager Instance { get; set; }
+
     void Start(){
         audioSrc = GetComponent<AudioSource>();
         audioSrc.clip = traversalTheme;
         audioSrc.Play();
+        Instance = this;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -65,27 +71,68 @@ public class GameManager : MonoBehaviour
         if(Inputs.Instance.input.Pause.WasPressedThisFrame()){
             ui.PauseGame();
         }
-
-        if(currState == "Traversal" && Score.instance.getScore() >= scoreToStartBoss){
-            audioSrc.Stop();
-            audioSrc.clip = bossTheme;
-            audioSrc.Play();
-            currState = "Boss Fight";
-            Instantiate(boss, enemySpawnRange.bounds.center, UnityEngine.Quaternion.identity);
+        
+        if(currState == GameState.Menu){
+            return;
         }
 
-        if(currState == "Traversal"){
-            enemySpawnTimer += Time.deltaTime;
-            if(enemySpawnTimer >= enemySpawnDelay){
-                SpawnRandomEnemy();
-                enemySpawnTimer = 0.0f;
-            }
-
-            powerUpSpawnTimer += Time.deltaTime;
-            if (powerUpSpawnTimer >= powerUpSpawnDelay) {
-                spawnPowerUp();
-                powerUpSpawnTimer = 0.0f;
-            }
+        if(currState == GameState.Traversal){
+            HandleTraversalState();
         }
+        
+        else if(currState == GameState.Boss){
+            HandleBossState();
+        }
+    }
+
+    void HandleTraversalState(){
+        if(Score.Instance.GetScore() >= scoreToStartBoss){
+            StartBossState();
+            return;
+        }
+
+        enemySpawnTimer += Time.deltaTime;
+        if(enemySpawnTimer >= enemySpawnDelay){
+            SpawnRandomEnemy();
+            enemySpawnTimer = 0.0f;
+        }
+        powerUpSpawnTimer += Time.deltaTime;
+        if (powerUpSpawnTimer >= powerUpSpawnDelay) {
+            spawnPowerUp();
+            powerUpSpawnTimer = 0.0f;
+        }
+    }
+
+    void StartBossState(){
+        currState = GameState.Boss;
+        Instantiate(boss, enemySpawnRange.bounds.center, UnityEngine.Quaternion.identity);
+        audioSrc.Stop();
+        audioSrc.clip = bossTheme;
+        audioSrc.Play();
+    }
+
+    void HandleBossState(){
+        if(GameObject.FindGameObjectWithTag("Boss") == null){
+            currState = GameState.Menu;
+            StartCoroutine(PlayVictory()); 
+        }
+    }
+
+    System.Collections.IEnumerator PlayVictory(){
+        audioSrc.Stop();
+        audioSrc.clip = victoryTheme;
+        audioSrc.loop = false;
+        audioSrc.Play();
+
+        yield return new WaitForSeconds(victoryTheme.length);
+
+        Score.Instance.UpdateScore(5000f);
+        scoreToStartBoss += 15000f;
+        enemySpawnDelay *= 0.8f; 
+
+        currState = GameState.Traversal;
+        audioSrc.loop = true;
+        audioSrc.clip = traversalTheme;
+        audioSrc.Play();
     }
 }

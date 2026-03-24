@@ -110,7 +110,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1578392453444958251, guid: 7c45d96a8abadeb49a23d2a5288fae12, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -259,15 +259,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ec3a6876eab89e4a9a10e54dd3f55ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spaceship
-  VerticalSpeed: 3
-  HorizontalSpeed: 0.5
+  VerticalSpeed: 5
+  HorizontalSpeed: 2
   enemyBulletPrefab: {fileID: 2301545309820664937, guid: 4619d31b9c9d08c4cbf3a60f6f408126, type: 3}
   bulletSpawnPoint: {fileID: 482472544137805174}
   fireRate: 1
   destroyAtX: -11
   expoPrefab: {fileID: 1672928346868709509, guid: 05a6c858c2093f44ba122cd39b8e96d8, type: 3}
-  shootingClip: {fileID: 8300000, guid: 8ca7e95ea9d9b8e4aa7290beb1d8d1f6, type: 3}
-  explosionClip: {fileID: 8300000, guid: 5842e8b75337e6a4582400cf701dd25d, type: 3}
+  shootingAudio: {fileID: 8300000, guid: 0e58f85a8fab9e340a24f3e0ac094fd5, type: 3}
+  explosionAudio: {fileID: 8300000, guid: 5842e8b75337e6a4582400cf701dd25d, type: 3}
 --- !u!82 &6837211183305261862
 AudioSource:
   m_ObjectHideFlags: 0
@@ -281,7 +281,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0.113
   m_Pitch: 1
   Loop: 0
   Mute: 0

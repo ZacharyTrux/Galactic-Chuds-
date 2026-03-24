@@ -5,14 +5,14 @@ public class Score : MonoBehaviour
 {
     private TextMeshProUGUI txtScore;
     private float score;
-    public static Score instance { get; private set; }
+    public static Score Instance { get; private set; }
 
     // retrieve the text box containing score text box
     void Awake()
     {
         txtScore = GetComponentInChildren<TextMeshProUGUI>();
         score = 0.0f;
-        instance = this;
+        Instance = this;
     }
 
     // Update is the UI every frame
@@ -26,7 +26,7 @@ public class Score : MonoBehaviour
         score += newScore;
     }
 
-    public float getScore(){
+    public float GetScore(){
         return score;
     }
 }

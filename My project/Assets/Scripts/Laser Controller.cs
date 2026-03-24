@@ -8,14 +8,14 @@ public class LaserController : MonoBehaviour
     public AudioClip laserFire;
     
     private SpriteRenderer sprite;
-    private Collider2D collider;
+    private Collider2D laserCollider;
     private AudioSource audioSrc;
 
     void Awake(){
         sprite = GetComponentInChildren<SpriteRenderer>();
-        collider = GetComponent<Collider2D>();
+        laserCollider = GetComponent<Collider2D>();
 
-        collider.enabled = false; // turn off collision
+        laserCollider.enabled = false; // turn off collision
     }   
 
     void Start(){
@@ -38,7 +38,7 @@ public class LaserController : MonoBehaviour
         audioSrc.pitch = laserFire.length / activeDuration;
         audioSrc.Play();
         sprite.color = new Color(1,1,1,1);
-        collider.enabled = true;
+        laserCollider.enabled = true;
         yield return new WaitForSeconds(activeDuration);
 
         float fadeTime = 0.2f;

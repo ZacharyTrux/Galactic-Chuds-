@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     {
         this.transform.Translate(Vector3.right * speed * Time.deltaTime);
 
-        if (transform.position.x > 12f) {
+        if (transform.position.x > 9f) {
             Destroy(gameObject);
         }
     }
