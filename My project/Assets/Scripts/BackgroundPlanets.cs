@@ -1,8 +1,8 @@
 using UnityEngine;
 
 public class BackgroundPlanets : MonoBehaviour{
+    // Public, inspector values 
     public Sprite[] planetSprites;
-    public int spawnX = 12;
     public float speed = 1f;
     public float minY = -4f;
     public float maxY = 4f;

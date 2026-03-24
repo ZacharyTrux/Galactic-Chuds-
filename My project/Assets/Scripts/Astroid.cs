@@ -2,23 +2,23 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal.Internal;
 
 public class EnemyController : MonoBehaviour {
-    // set in inspector
-    public float speed = 4f;
+    // public, inspector values
+    public float speed = 4f; 
     public float destroyAtX = -11f;
-    private const float awardedPoints = 500.0f; 
 
-    private void Update() {
-        transform.Translate(Vector2.left * speed * Time.deltaTime);
+    private void Update(){
+        transform.Translate(Vector2.left * speed * Time.deltaTime); // move left every in game second
 
-        if (transform.position.x < destroyAtX) {
+        if (transform.position.x < destroyAtX) { // eliminate object after going off screen
             Destroy(gameObject);
         }
     }
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.CompareTag("Player Bullet")) {
+
+    private void OnTriggerEnter2D(Collider2D other){ // Collision detection
+        if (other.gameObject.CompareTag("Player Bullet")){ // delete bullets
             Destroy(other.gameObject);
         }
-        else if (other.gameObject.CompareTag("Player")) {
+        else if (other.gameObject.CompareTag("Player")){ // damage player 
             other.gameObject.GetComponentInParent<Player>().DamageFromEnemy();
             Destroy(gameObject);
         }

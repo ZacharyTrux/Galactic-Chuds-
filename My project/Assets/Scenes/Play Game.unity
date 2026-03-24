@@ -653,14 +653,14 @@ MonoBehaviour:
   iFrames: 1.5
   speed: 5
   bulletPrefab: {fileID: 6934486477396096943, guid: 4bd2973c19c2fd14883917c8fd4491d1, type: 3}
-  misslePrefab: {fileID: 1896099456631121570, guid: b189f927593a04c40af3856e0b2623c4, type: 3}
-  bulletSpawnPoint: {fileID: 524207813}
-  sliderHealth: {fileID: 470269650}
-  shield: {fileID: 0}
-  ui: {fileID: 1000347975}
+  missilePrefab: {fileID: 1896099456631121570, guid: b189f927593a04c40af3856e0b2623c4, type: 3}
   expoPrefab: {fileID: 1672928346868709509, guid: 05a6c858c2093f44ba122cd39b8e96d8, type: 3}
+  bulletSpawnPoint: {fileID: 524207813}
+  shield: {fileID: 0}
+  sliderHealth: {fileID: 470269650}
+  ui: {fileID: 1000347975}
   shootingSound: {fileID: 8300000, guid: 820ea0889ba5cb44587cc47fcfe640ba, type: 3}
-  missleFireSound: {fileID: 8300000, guid: afe143fa45d85724e810fdcfd0c92a82, type: 3}
+  missileFireSound: {fileID: 8300000, guid: afe143fa45d85724e810fdcfd0c92a82, type: 3}
   damage: {fileID: 8300000, guid: ae881082345af344f96172cb9b542b7a, type: 3}
 --- !u!82 &357756901
 AudioSource:
@@ -2588,7 +2588,6 @@ MonoBehaviour:
   - {fileID: -7560284153744367771, guid: 62afabb27cb64a94fa1092f9f1643406, type: 3}
   - {fileID: -8890641348306671835, guid: 9a90da8c31e111e4bb3ec00a4cf8bf4e, type: 3}
   - {fileID: 7587871561562361072, guid: 25a8747e7e6215e4c97fe09295cf7ae0, type: 3}
-  spawnX: 12
   speed: 2
   minY: -4
   maxY: 4
