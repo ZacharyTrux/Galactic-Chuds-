@@ -6,64 +6,62 @@ using UnityEngine.InputSystem;
 
 
 public class Player : MonoBehaviour {
-    // set in inspector
+    // public, inspection, variables
     public float iFrames = 3f;
     public float speed = 5f;
     public GameObject bulletPrefab;
-    public GameObject misslePrefab;
-    public Transform bulletSpawnPoint;
-    public Slider sliderHealth;
-    public Shield shield;   
-    public UI ui;
+    public GameObject missilePrefab;
     public GameObject expoPrefab;
+    public Transform bulletSpawnPoint;
+    public Shield shield;
+    public Slider sliderHealth;
+    public UI ui;
     public AudioClip shootingSound;
-    public AudioClip missleFireSound;
+    public AudioClip missileFireSound;
     public AudioClip damage;
 
 
-
+    // private variables
     private Inputs input;    
     private const float Y_LIMIT = 4.6f;
     private const float X_LIMIT = 8.2f;
     private float health;
     private bool isInvincible = false;
     private SpriteRenderer sprite;
-    
     private AudioSource audioSrc;
 
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Grab and set components needed
     void Start(){
-        health = 1.0f;
+        health = 1.0f; // initiate health to the max health
         audioSrc = GetComponent<AudioSource>();
         sprite = GetComponentInChildren<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update(){
-        sliderHealth.value = health;
+        sliderHealth.value = health; // update health every frame
 
-        // Player Shooting
+        // Player Shooting bullets/missile
         if (Inputs.Instance.input.Shoot.WasPressedThisFrame()){
             GameObject bulletObj = Instantiate(bulletPrefab, bulletSpawnPoint.position, UnityEngine.Quaternion.identity);
             audioSrc.clip = shootingSound;
             audioSrc.Play();
         }
-        else if(Inputs.Instance.input.Missle.WasPressedThisFrame()){
-            GameObject missleObj = Instantiate(misslePrefab, bulletSpawnPoint.position, UnityEngine.Quaternion.identity);
-            audioSrc.clip = missleFireSound;
+        else if(Inputs.Instance.input.Missile.WasPressedThisFrame()){
+            GameObject missileObj = Instantiate(missilePrefab, bulletSpawnPoint.position, UnityEngine.Quaternion.identity);
+            audioSrc.clip = missileFireSound;
             audioSrc.Play();
         }
 
         // Player Movement
-        var vertMove = Inputs.Instance.input.MoveVertically.ReadValue<float>();
-        var horizontalMove = Inputs.Instance.input.MoveHortizontally.ReadValue<float>();
+        var vertMove = Inputs.Instance.input.MoveVertically.ReadValue<float>(); // move vertically based off input
+        var horizontalMove = Inputs.Instance.input.MoveHortizontally.ReadValue<float>(); // move horizontally based off input
         this.transform.Translate(UnityEngine.Vector3.up * speed * Time.deltaTime * vertMove);
-        this.transform.Translate(UnityEngine.Vector3.right * speed * Time.deltaTime * horizontalMove);
-        CheckBounds(); // Ensure player does not go off screen
+        this.transform.Translate(UnityEngine.Vector3.right * speed * Time.deltaTime * horizontalMove); // performs the updated movements
+        CheckBounds(); // ensure player does not go off screen
     }
 
-    private void CheckBounds(){
+    private void CheckBounds(){ // boundary checks
         if (this.transform.position.y > Y_LIMIT)
         {
             this.transform.position = new UnityEngine.Vector3(transform.position.x, Y_LIMIT);
@@ -82,6 +80,7 @@ public class Player : MonoBehaviour {
         }
     }
 
+    // update health and check for game over
     public void DamageFromEnemy(){
         if(isInvincible) return;
         /*
@@ -90,7 +89,7 @@ public class Player : MonoBehaviour {
         }
         */
         health -= 0.25f;
-        StartCoroutine(IFramesEnabled());
+        StartCoroutine(IFramesEnabled()); // enable Iframes on player
 
         if(health <= 0){
             sliderHealth.value = health;
@@ -105,20 +104,23 @@ public class Player : MonoBehaviour {
         shield.FullRefill();
     }
 
-    private System.Collections.IEnumerator IFramesEnabled(){
-        isInvincible = true;
+    // NOTE:
+    // IEnumerator allows for pausing execution of controls and waiting till a given action or amount of time has passed to continue further
+    // Player can continue movement and other actions while waiting for invincibility to turn off
+    private System.Collections.IEnumerator IFramesEnabled(){ // go through IFrames
+        isInvincible = true; // ensure player can not be hurt
         for(int i = 0; i < 4; i++){
-            sprite.color = new Color(1,1,1, 0.2f);
-            yield return new WaitForSeconds(iFrames / 8);
-            sprite.color = new Color(1,1,1, 1);
+            sprite.color = new Color(1,1,1, 0.2f); // lower alpha of player
+            yield return new WaitForSeconds(iFrames / 8); 
+            sprite.color = new Color(1,1,1, 1); // increase again to mimic flashing
             yield return new WaitForSeconds(iFrames / 8);
         }
 
-        isInvincible = false;
+        isInvincible = false; // player is damagable again
     }
 
     private void GameOver(){
-        Destroy(gameObject);
+        Destroy(gameObject); // destroy the player
         var expoObj = Instantiate(expoPrefab, transform.position, UnityEngine.Quaternion.identity); // creates explosion of enemy object
         Destroy(expoObj, expoObj.GetComponent<ParticleSystem>().main.duration); // delete explosion after it goes off
     }

@@ -138,7 +138,7 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Missle"",
+                    ""name"": ""Missile"",
                     ""type"": ""Button"",
                     ""id"": ""7ba4f119-0971-41d6-8b1a-f305cad73bb3"",
                     ""expectedControlType"": """",
@@ -331,7 +331,7 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Missle"",
+                    ""action"": ""Missile"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -347,7 +347,7 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
         m_Standard_MoveVertically = m_Standard.FindAction("MoveVertically", throwIfNotFound: true);
         m_Standard_MoveHortizontally = m_Standard.FindAction("MoveHortizontally", throwIfNotFound: true);
         m_Standard_Shield = m_Standard.FindAction("Shield", throwIfNotFound: true);
-        m_Standard_Missle = m_Standard.FindAction("Missle", throwIfNotFound: true);
+        m_Standard_Missile = m_Standard.FindAction("Missile", throwIfNotFound: true);
     }
 
     ~@GalacticChudInputs()
@@ -433,7 +433,7 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Standard_MoveVertically;
     private readonly InputAction m_Standard_MoveHortizontally;
     private readonly InputAction m_Standard_Shield;
-    private readonly InputAction m_Standard_Missle;
+    private readonly InputAction m_Standard_Missile;
     /// <summary>
     /// Provides access to input actions defined in input action map "Standard".
     /// </summary>
@@ -466,9 +466,9 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Shield => m_Wrapper.m_Standard_Shield;
         /// <summary>
-        /// Provides access to the underlying input action "Standard/Missle".
+        /// Provides access to the underlying input action "Standard/Missile".
         /// </summary>
-        public InputAction @Missle => m_Wrapper.m_Standard_Missle;
+        public InputAction @Missile => m_Wrapper.m_Standard_Missile;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -510,9 +510,9 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
             @Shield.started += instance.OnShield;
             @Shield.performed += instance.OnShield;
             @Shield.canceled += instance.OnShield;
-            @Missle.started += instance.OnMissle;
-            @Missle.performed += instance.OnMissle;
-            @Missle.canceled += instance.OnMissle;
+            @Missile.started += instance.OnMissile;
+            @Missile.performed += instance.OnMissile;
+            @Missile.canceled += instance.OnMissile;
         }
 
         /// <summary>
@@ -539,9 +539,9 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
             @Shield.started -= instance.OnShield;
             @Shield.performed -= instance.OnShield;
             @Shield.canceled -= instance.OnShield;
-            @Missle.started -= instance.OnMissle;
-            @Missle.performed -= instance.OnMissle;
-            @Missle.canceled -= instance.OnMissle;
+            @Missile.started -= instance.OnMissile;
+            @Missile.performed -= instance.OnMissile;
+            @Missile.canceled -= instance.OnMissile;
         }
 
         /// <summary>
@@ -618,11 +618,11 @@ public partial class @GalacticChudInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnShield(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Missle" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Missile" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMissle(InputAction.CallbackContext context);
+        void OnMissile(InputAction.CallbackContext context);
     }
 }

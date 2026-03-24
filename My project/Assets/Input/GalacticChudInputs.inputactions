@@ -52,7 +52,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Missle",
+                    "name": "Missile",
                     "type": "Button",
                     "id": "7ba4f119-0971-41d6-8b1a-f305cad73bb3",
                     "expectedControlType": "",
@@ -245,7 +245,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Missle",
+                    "action": "Missile",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
