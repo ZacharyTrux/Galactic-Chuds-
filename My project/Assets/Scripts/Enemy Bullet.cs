@@ -11,16 +11,11 @@ public class EnemyBullet : MonoBehaviour {
         }
     }
 
-<<<<<<< Updated upstream
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Shield")) {
             Destroy(gameObject);
         }
         else if (other.gameObject.CompareTag("Player")) {
-=======
-    private void OnTriggerEnter2D(Collider2D other){
-        if (other.gameObject.CompareTag("Player")) { // detect player collision
->>>>>>> Stashed changes
             other.gameObject.GetComponent<Player>().DamageFromEnemy();
             Destroy(gameObject);
         }

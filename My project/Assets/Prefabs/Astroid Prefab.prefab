@@ -141,6 +141,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   speed: 4
   destroyAtX: -12
+  expoPrefab: {fileID: 1672928346868709509, guid: 05a6c858c2093f44ba122cd39b8e96d8, type: 3}
+  explosionAudio: {fileID: 8300000, guid: 5842e8b75337e6a4582400cf701dd25d, type: 3}
 --- !u!58 &3904367578648387551
 CircleCollider2D:
   m_ObjectHideFlags: 0

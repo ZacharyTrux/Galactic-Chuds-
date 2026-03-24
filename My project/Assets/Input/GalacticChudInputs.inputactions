@@ -50,15 +50,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Missile",
-                    "type": "Button",
-                    "id": "7ba4f119-0971-41d6-8b1a-f305cad73bb3",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -235,17 +226,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Shield",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "614bc82d-5784-46c8-85f6-0e0c6891480f",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Missile",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

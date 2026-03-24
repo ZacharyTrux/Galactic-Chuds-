@@ -112,14 +112,7 @@ public class BossFight : MonoBehaviour{
             Destroy(other.gameObject);
             ShieldedPhaseDamage();
         }
-<<<<<<< Updated upstream
-        else if(other.CompareTag("Shield")){
-        }
         else if(other.CompareTag("Player")){
-=======
-
-        else if(other.CompareTag("Player")){ // damage player if too close
->>>>>>> Stashed changes
             other.gameObject.GetComponent<Player>().DamageFromEnemy();
         }
     }

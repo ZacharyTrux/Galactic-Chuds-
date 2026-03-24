@@ -19,6 +19,7 @@ public class Player : MonoBehaviour {
     public AudioClip shootingSound;
     public AudioClip missileFireSound;
     public AudioClip damage;
+    public AudioClip explosionAudio;
 
 
     // private variables
@@ -53,11 +54,6 @@ public class Player : MonoBehaviour {
             audioSrc.clip = shootingSound;
             audioSrc.Play();
         }
-        else if(Inputs.Instance.input.Missile.WasPressedThisFrame()){
-            GameObject missileObj = Instantiate(missilePrefab, bulletSpawnPoint.position, UnityEngine.Quaternion.identity);
-            audioSrc.clip = missileFireSound;
-            audioSrc.Play();
-        }
 
         // Player Movement
         var vertMove = Inputs.Instance.input.MoveVertically.ReadValue<float>(); // move vertically based off input
@@ -89,11 +85,6 @@ public class Player : MonoBehaviour {
     // update health and check for game over
     public void DamageFromEnemy(){
         if(isInvincible) return;
-        /*
-        if (!shield.IsActive) {
-            health -= 0.25f;
-        }
-        */
         health -= 0.25f;
         StartCoroutine(IFramesEnabled()); // enable Iframes on player
 
@@ -130,13 +121,18 @@ public class Player : MonoBehaviour {
     }
 
     private void GameOver(){
+        Explosion();
         Destroy(gameObject); // destroy the player
-        var expoObj = Instantiate(expoPrefab, transform.position, UnityEngine.Quaternion.identity); // creates explosion of enemy object
-        Destroy(expoObj, expoObj.GetComponent<ParticleSystem>().main.duration); // delete explosion after it goes off
     }
 
     public bool IsInvincible(){
         return isInvincible;
+    }
+
+    private void Explosion(){
+        AudioSource.PlayClipAtPoint(explosionAudio, transform.position);
+        var expoObj = Instantiate(expoPrefab, transform.position, UnityEngine.Quaternion.identity); // creates explosion of enemy object
+        Destroy(expoObj, expoObj.GetComponent<ParticleSystem>().main.duration); // delete explosion after it goes off
     }
 
 }

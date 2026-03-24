@@ -9,6 +9,7 @@ public class UI : MonoBehaviour {
     public GameObject pauseMenu;
     public GameObject health;
     public GameObject score;
+    public GameObject shield;
     public bool IsReady { get; private set; }
 
     // private variables
@@ -27,6 +28,7 @@ public class UI : MonoBehaviour {
         else{
             health.SetActive(false); 
             score.SetActive(false);
+            shield.SetActive(false); 
             titleScreen.SetActive(true);
             Inputs.Instance.DisableInput();
             IsReady = false;
@@ -65,6 +67,7 @@ public class UI : MonoBehaviour {
     public void StartGame(){ // begin game and turn back on UI elements needed
         health.SetActive(true);
         score.SetActive(true);
+        shield.SetActive(true); 
         Inputs.Instance.EnableInput();
         titleScreen.SetActive(false);
         GameManager.Instance.currState = GameState.Traversal;
@@ -73,6 +76,7 @@ public class UI : MonoBehaviour {
 
     public void RestartGame(){ // load scene back up, ignroing title screen
         SkipTitle = true;
+        GameManager.SkipTitleNextLoad = true;
         SceneManager.LoadScene(0);
     }
 
