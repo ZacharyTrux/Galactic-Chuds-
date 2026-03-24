@@ -13,8 +13,13 @@ GameObject:
   - component: {fileID: 3833580703122929253}
   - component: {fileID: 2751968979150379354}
   m_Layer: 0
+<<<<<<< Updated upstream:My project/Assets/Prefabs/MissilePrefab.prefab
   m_Name: MissilePrefab
   m_TagString: Missile
+=======
+  m_Name: Missile Prefab
+  m_TagString: Player Bullet
+>>>>>>> Stashed changes:My project/Assets/Prefabs/Missile Prefab.prefab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

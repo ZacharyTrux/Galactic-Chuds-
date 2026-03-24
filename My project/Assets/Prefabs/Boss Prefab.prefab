@@ -647,7 +647,7 @@ GameObject:
   - component: {fileID: -7152523869135541774}
   - component: {fileID: 5801150553650178896}
   m_Layer: 0
-  m_Name: Boss
+  m_Name: Boss Prefab
   m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -780,14 +780,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossFight
   missilesToBreak: 2
   maxHealth: 1
-  sliderHealth: {fileID: 8272626289208677189}
-  currState: 0
   attackCooldown: 4
   expoPrefab: {fileID: 1672928346868709509, guid: 05a6c858c2093f44ba122cd39b8e96d8, type: 3}
   expoAudio: {fileID: 8300000, guid: 5842e8b75337e6a4582400cf701dd25d, type: 3}
+  bossDamagedAudio: {fileID: 8300000, guid: 3843899f83db1a447860ede9e1062b43, type: 3}
   bossHeads:
   - {fileID: 7420243881418007445}
   - {fileID: 1476719178854559815}
+  sliderHealth: {fileID: 8272626289208677189}
 --- !u!114 &3799484003913531215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,7 +833,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.114
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -14,22 +14,22 @@ public class BossLaser : MonoBehaviour
         spawnLocations = LocationContainer.GetComponentsInChildren<BoxCollider2D>();
     }
 
-    public void FirePattern(){
+    public void FirePattern(){ // determine firing pattern of lasers
         List<int> indices = new List<int>();
         for(int i = 0; i < spawnLocations.Length; i++){
-            indices.Add(i);
+            indices.Add(i); // add each BoxCollider2D index
         }
 
-        for(int i = 0; i < indices.Count; i++){
+        for(int i = 0; i < indices.Count; i++){ // randomize the index's
             int temp = indices[i];
             int randomIndex = Random.Range(i, indices.Count);
             indices[i] = indices[randomIndex];
             indices[randomIndex] = temp;
         }
 
-        for(int i = totalSafeZones; i < indices.Count; i++){
+        for(int i = totalSafeZones; i < indices.Count; i++){ // first two index's are safe zones, the rest are not
             Vector2 spawnPos = spawnLocations[indices[i]].transform.position;
-            Instantiate(laserPrefab, spawnPos, Quaternion.Euler(0,0,180));
+            Instantiate(laserPrefab, spawnPos, Quaternion.Euler(0,0,180)); // spawn lasers
         }
     }
     

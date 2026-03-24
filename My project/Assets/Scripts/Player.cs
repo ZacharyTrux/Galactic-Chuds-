@@ -135,4 +135,8 @@ public class Player : MonoBehaviour {
         Destroy(expoObj, expoObj.GetComponent<ParticleSystem>().main.duration); // delete explosion after it goes off
     }
 
+    public bool IsInvincible(){
+        return isInvincible;
+    }
+
 }

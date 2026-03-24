@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public class LaserController : MonoBehaviour
-{
+public class LaserController : MonoBehaviour{
+    // public, inspector variables
     public float warningDuration = 1.2f;
     public float activeDuration = 2f;
-    public AudioClip laserCharge;
-    public AudioClip laserFire;
+    public AudioClip laserChargeAudio;
+    public AudioClip laserFireAudio;
     
+    // private variables
     private SpriteRenderer sprite;
     private Collider2D laserCollider;
     private AudioSource audioSrc;
@@ -20,44 +21,41 @@ public class LaserController : MonoBehaviour
 
     void Start(){
         audioSrc = GetComponent<AudioSource>();
-        StartCoroutine(LaserRoutine());
+        StartCoroutine(LaserRoutine()); // start a sub-routine
     }
 
     System.Collections.IEnumerator LaserRoutine(){
         float elapsedTime = 0;
-        audioSrc.clip = laserCharge;
+        audioSrc.clip = laserChargeAudio;
         audioSrc.Play();
         while(elapsedTime <= warningDuration){
-            float alphaVal = Mathf.PingPong(Time.time * 5f, 0.9f) + 0.1f;
+            float alphaVal = Mathf.PingPong(Time.time * 5f, 0.9f) + 0.1f; // go back and forth between alpha values
             sprite.color = new Color(1, 1, 1, alphaVal);
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.deltaTime; // update how much time is passed to signal moving passed warnings
             yield return null;
         }
 
-        audioSrc.clip = laserFire;
-        audioSrc.pitch = laserFire.length / activeDuration;
+        audioSrc.clip = laserFireAudio;
+        audioSrc.pitch = laserFireAudio.length / activeDuration; // only play the sound for as long as activate duration is 
         audioSrc.Play();
-        sprite.color = new Color(1,1,1,1);
-        laserCollider.enabled = true;
-        yield return new WaitForSeconds(activeDuration);
+        sprite.color = new Color(1,1,1,1); // brighten sprite to make it more vibrant
+        laserCollider.enabled = true; // enable collider
+        yield return new WaitForSeconds(activeDuration); // wait until the active duration is complete to move forward
 
-        float fadeTime = 0.2f;
-        float startVolume = audioSrc.volume;
-        while (audioSrc.volume > 0)
-        {
-            audioSrc.volume -= startVolume * Time.deltaTime / fadeTime;
-            yield return null;
-        }
-
-        Destroy(gameObject);
+        Destroy(gameObject); // destroy laser
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
+<<<<<<< Updated upstream
         if (other.gameObject.CompareTag("Player")) {
             Player player = other.gameObject.GetComponentInParent<Player>();
             if (!player.shield.IsActive) { // only damage player if shield is not active
                 player.DamageFromEnemy();
             }
+=======
+        if (other.gameObject.CompareTag("Player")) { // colliding with player causes damage
+            other.gameObject.GetComponentInParent<Player>().DamageFromEnemy();   
+>>>>>>> Stashed changes
         }
     }
 }

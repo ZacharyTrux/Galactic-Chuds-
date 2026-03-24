@@ -5,8 +5,7 @@ public class Inputs : MonoBehaviour
     public static Inputs Instance { get; private set; }
     public GalacticChudInputs.StandardActions input;
 
-    private void Awake()
-    {
+    private void Awake(){
         Instance = this;
         var inputActions = new GalacticChudInputs();
         inputActions.Enable();
@@ -14,12 +13,11 @@ public class Inputs : MonoBehaviour
         input.Enable();
     }
     
-    public void DisableInput(){
+    public void DisableInput(){ // ensure no inputs can be made
         input.Disable();
     }
 
-    // Update is called once per frame
-    public void EnableInput(){
+    public void EnableInput(){ // ensure input is given back
         input.Enable();
     }
 }

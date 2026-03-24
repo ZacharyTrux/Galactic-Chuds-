@@ -2,18 +2,19 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UI : MonoBehaviour
-{
+public class UI : MonoBehaviour {
+    // public, inspector variables
     public GameObject titleScreen;
     public GameObject gameOver;
     public GameObject pauseMenu;
     public GameObject health;
     public GameObject score;
+    public bool IsReady { get; private set; }
 
+    // private variables
     private static bool SkipTitle = false;
 
-    public bool IsReady { get; private set; }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // When starting the game, turn off UI elements and determine if title needs to be shown
     void Start(){
         gameOver.SetActive(false);
         pauseMenu.SetActive(false);
@@ -24,7 +25,7 @@ public class UI : MonoBehaviour
             SkipTitle = false;
         }
         else{
-            health.SetActive(false);
+            health.SetActive(false); 
             score.SetActive(false);
             titleScreen.SetActive(true);
             Inputs.Instance.DisableInput();
@@ -32,36 +33,36 @@ public class UI : MonoBehaviour
         }
     }
 
-    public void ShowGameOver(){
+    public void ShowGameOver(){ // Game Over UI
         gameOver.SetActive(true);
-
         TMPro.TextMeshProUGUI scoreText = gameOver.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-        scoreText.text = "Final Score: " + Score.Instance.GetScore();
+        scoreText.text = "Final Score: " + Score.Instance.GetScore(); // show final score
 
-        Inputs.Instance.DisableInput();
+        Inputs.Instance.DisableInput(); // ensure player can not perform inputs
         IsReady = false;
     }
 
-    public void PauseGame(){
+    public void PauseGame(){ // pause the game in its current state
         Inputs.Instance.DisableInput();
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
     }
 
-    public void ResumeGame(){
+    public void ResumeGame(){ // return game to current state
         Inputs.Instance.EnableInput();
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
     }
 
-    public void ReturnMainMenu(){
+    public void ReturnMainMenu(){ // Turn off all other UI besides Title Screen
         SceneManager.LoadScene(0);
         pauseMenu.SetActive(false);
         gameOver.SetActive(false);
         titleScreen.SetActive(true);
+        IsReady = false;
     }
 
-    public void StartGame(){
+    public void StartGame(){ // begin game and turn back on UI elements needed
         health.SetActive(true);
         score.SetActive(true);
         Inputs.Instance.EnableInput();
@@ -70,7 +71,8 @@ public class UI : MonoBehaviour
         IsReady = true;
     }
 
-    public void RestartGame(){
+    public void RestartGame(){ // load scene back up, ignroing title screen
+        SkipTitle = true;
         SceneManager.LoadScene(0);
     }
 

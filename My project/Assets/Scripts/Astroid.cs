@@ -22,7 +22,9 @@ public class EnemyController : MonoBehaviour {
         }
         else if (other.gameObject.CompareTag("Player")){ // damage player 
             other.gameObject.GetComponentInParent<Player>().DamageFromEnemy();
-            Destroy(gameObject);
+            if(!other.gameObject.GetComponentInParent<Player>().IsInvincible()){
+                Destroy(gameObject);
+            }
         }
     }
 }

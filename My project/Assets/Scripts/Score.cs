@@ -3,21 +3,20 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
+    public static Score Instance { get; private set; } // instance for other scripts to access
+
     private TextMeshProUGUI txtScore;
     private float score;
-    public static Score Instance { get; private set; }
 
     // retrieve the text box containing score text box
-    void Awake()
-    {
+    void Awake(){
         txtScore = GetComponentInChildren<TextMeshProUGUI>();
         score = 0.0f;
         Instance = this;
     }
 
     // Update is the UI every frame
-    void Update()
-    {
+    void Update(){
         txtScore.text = ((int)score).ToString("D8");
     }
 
